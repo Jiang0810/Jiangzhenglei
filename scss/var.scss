@@ -1,0 +1,22 @@
+// Apple-Inspired Design Variables
+
+// Colors (CSS custom properties handle the actual values)
+$placeholder-color : #a1a1a6;
+
+// loading-circle
+$loading-width : 48px;
+$loading-height : 48px;
+$loading-border-width : 3px;
+
+// colors (kept for spinner accents, but mostly using CSS vars now)
+$bd-green: rgb(0, 113, 227);
+$bd-blue:  rgb(0, 113, 227);
+$bd-orange: rgb(0, 113, 227);
+$bd-red: rgb(0, 113, 227);
+
+// layout
+$content-maxw: 980px;
+$card-radius: 16px;
+
+//other
+$body-fontfamily : -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
