@@ -263,26 +263,15 @@ $(window).load(function() {
     $('html,body').animate({scrollTop:0}, 100);
     Global.isScrolling = false;
 
-    (function load_init(){
+    // Directly show content — skip loading spinner
+    $('.back-home').css('opacity',1);
+    $('.loading').remove();
+    $("body").addClass('finish-loading');
+    $('body').removeClass('loading-process');
 
-        //资源加载完成之后，开始初始化
-
-        $("body").addClass('finish-loading');
-
-        $('.finish-loading .loading').animate({top:"20px"},600,function(){
-            $('.back-home').css('opacity',1);
-            $('.loading').remove();
-        });
-
-        setTimeout(function(){
-            $('body').removeClass('loading-process');
-        },600);
-
-        Global.fadeInByOrder('.nav',100,function(){
-            Global.fadeInByOrder('.section-fristpage',300);
-        });
-
-    })();
+    Global.fadeInByOrder('.nav',80,function(){
+        Global.fadeInByOrder('.section-fristpage',120);
+    });
 
 });
 
@@ -309,7 +298,7 @@ window.onscroll = Global.throttle(function(){
                 break;
         }
 
-        Global.fadeInByOrder(fadeInTarget,200);
+        Global.fadeInByOrder(fadeInTarget,100);
 
     },50);
 
