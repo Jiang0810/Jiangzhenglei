@@ -761,6 +761,90 @@ strong {
   opacity: 0.7;
 }
 
+/* Photo gallery grid */
+.detail-photos {
+  margin-top: 16px;
+}
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+.photo-grid .photo-slot {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s;
+}
+.photo-grid .photo-slot:hover {
+  border-color: var(--accent);
+}
+.photo-grid .photo-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.photo-grid .photo-slot .photo-add {
+  font-size: 24px;
+  color: var(--text-tertiary);
+  opacity: 0.5;
+  line-height: 1;
+}
+.photo-grid .photo-slot:hover .photo-add {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* Edit mode: show project data */
+body.is-editing #project-data-container {
+  display: block !important;
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  z-index: 998;
+  max-width: 400px;
+  max-height: 50vh;
+  overflow-y: auto;
+  background: var(--bg-primary);
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  opacity: 0.95;
+}
+body.is-editing .project-data {
+  margin-bottom: 16px;
+  padding: 12px;
+  border: 1px dashed var(--border-subtle);
+  border-radius: 8px;
+}
+body.is-editing .project-data:hover {
+  border-color: var(--accent);
+}
+body.is-editing .project-data [contenteditable] {
+  outline: 1px dashed var(--accent);
+  outline-offset: 1px;
+  border-radius: 2px;
+  padding: 2px 4px;
+}
+body.is-editing .project-data .pd-body {
+  font-size: 11px;
+  line-height: 1.4;
+}
+body.is-editing .project-data .pd-body p {
+  padding-bottom: 6px;
+}
+
 /* ============================================
    Skills Section
    ============================================ */

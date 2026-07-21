@@ -166,7 +166,7 @@
 			<div class="detail-body" id="detail-body"></div>
 			<a class="detail-link" id="detail-link" target="_blank">查看 GitHub →</a>
 
-			<div class="detail-showcase" id="detail-showcase" style="display:none">
+			<div class="detail-showcase" id="detail-showcase">
 				<div class="detail-showcase-label">📎 展示链接</div>
 				<a class="detail-showcase-link" id="detail-showcase-link" target="_blank">🔗 在线演示</a>
 
@@ -174,12 +174,75 @@
 					<div class="video-placeholder" id="video-placeholder">
 						<span class="video-icon">🎬</span>
 						<span>点击上传演示视频</span>
-						<span class="video-hint">或将视频文件放入 images/videos/ 文件夹后修改代码引用</span>
+						<span class="video-hint">视频文件放入 images/videos/ 或直接点击上传</span>
 					</div>
 					<video id="detail-video" controls style="display:none"></video>
 				</div>
+
+				<div class="detail-photos" id="detail-photos">
+					<div class="detail-showcase-label">📸 项目照片（最多10张）</div>
+					<div class="photo-grid" id="photo-grid"></div>
+				</div>
 			</div>
 		</div>
+	</div>
+</div>
+
+<!-- ===== Hidden Project Data (editable via edit mode) ===== -->
+<div id="project-data-container" style="display:none" aria-hidden="true">
+	<div class="project-data" id="pd-shenfei">
+		<div class="pd-title">✈ 航空工业沈阳飞机工业集团有限公司</div>
+		<div class="pd-sub">智能化数字化中心 · AI应用工程师 · 2026.2 – 2026.4</div>
+		<div class="pd-body"><p><strong>基于大语言模型采用RAG检索增强的航空零件工艺生成系统</strong></p><p><strong>1. RAG工艺生成链搭建</strong><br>针对传统工艺生成效率低的问题，使用 Claude Code 基于 Langchain 框架构建 RAG 检索增强生成链，结合 BGE 中文嵌入模型与 FAISS 向量索引库。完成 6k+ 条数据的清洗、预处理与向量化。</p><p><strong>2. 对比实验与效果评估</strong><br>设计并执行 5 组对比实验，覆盖检索策略、示例数量与模型架构等。实现编辑距离、BLEU-1/4、ROUGE-L 三类评估指标，在 5,533 样本上达到工艺相似率 0.93。</p><p><strong>3. Prompt工程与缓存优化</strong><br>设计多层级 Prompt 模板引导大模型输出结构化工序序列。编写工序简述实现信息去噪，设计 RAG 缓存预计算机制提升检索效率。</p></div>
+		<div class="pd-link">https://github.com/Jiang0810</div>
+		<div class="pd-showcase"></div>
+		<div class="pd-video"></div>
+		<div class="pd-photos"></div>
+	</div>
+	<div class="project-data" id="pd-hetao">
+		<div class="pd-title">🧠 北京聪明核桃教育科技有限公司</div>
+		<div class="pd-sub">教研部 · AI产品经理 · 2026.5 – 2026.7</div>
+		<div class="pd-body"><p><strong>Dify 工作流搭建 · 课程内容生成 Agent 系统</strong></p><ul><li>输出完整 PRD 需求文档，明确系统功能架构、调用链路与验收标准</li><li>设计并落地基于 Dify 平台的课程内容生成 Agent 系统</li><li>独立开发编程题解生成专属 Skill 嵌入工作流</li><li>单课时生产周期从 <strong>3 天缩短至 4 小时</strong></li><li>支撑暑期 20+ 节 AI 启蒙课的规模化内容交付</li></ul></div>
+		<div class="pd-link">https://github.com/Jiang0810</div>
+		<div class="pd-showcase"></div>
+		<div class="pd-video"></div>
+		<div class="pd-photos"></div>
+	</div>
+	<div class="project-data" id="pd-missile">
+		<div class="pd-title">🚀 导弹协同攻击系统</div>
+		<div class="pd-sub">第二作者 / Python开发 / 全国计算机设计大赛二等奖</div>
+		<div class="pd-body"><ul><li>基于 Python + A* 搜索算法实现导弹协同供给系统</li><li>采用 Voronoi 图对战场建模，极大加快搜索速度</li><li>结合威胁代价等多价值综合设计目标函数</li><li>本人负责编写 A* 算法核心逻辑</li></ul></div>
+		<div class="pd-link">https://github.com/Jiang0810/Missle</div>
+		<div class="pd-showcase"></div>
+		<div class="pd-video"></div>
+		<div class="pd-photos"></div>
+	</div>
+	<div class="project-data" id="pd-phantom-go">
+		<div class="pd-title">⚫ Phantom-Go 围棋博弈程序</div>
+		<div class="pd-sub">第一作者 / C++开发 / 全国计算机博弈大赛三等奖</div>
+		<div class="pd-body"><ul><li>基于 C++ + 蒙特卡洛树搜索（MCTS）实现围棋对战程序</li><li>前期固定策略 + 后期启发式搜索策略</li><li>动态轮数迭代搜索（10w → 3w）</li><li>本人负责除测试外的全部开发工作</li></ul></div>
+		<div class="pd-link">https://github.com/Jiang0810/Phantom-Go</div>
+		<div class="pd-showcase"></div>
+		<div class="pd-video"></div>
+		<div class="pd-photos"></div>
+	</div>
+	<div class="project-data" id="pd-rapid-dev">
+		<div class="pd-title">⚡ 一小时快速开发 APP 与管理系统</div>
+		<div class="pd-sub">AI辅助全链路开发 · Uniapp + Vue3 + SpringBoot · 2小时交付</div>
+		<div class="pd-body"><p><strong>vibe-coding 快速开发实践</strong></p><p>基于 AI 编程方法论（需求描述 → AI生成 → Review → 测试 → 交付），在 1-2 小时内完成从前端到后端的全链路功能开发：</p><ul><li><strong>微信小程序</strong>：使用 Uniapp + HBuilderX 快速搭建，AI 辅助生成页面结构与交互逻辑</li><li><strong>iOS / Android App</strong>：基于 Uniapp 跨端编译，一套代码多端发布</li><li><strong>Web 后台管理系统</strong>：Vue3 + SpringBoot + MybatisPlus，包含权限管理、数据可视化等模块</li><li><strong>数据库设计</strong>：AI 辅助完成 MySQL 表结构设计与 SQL 优化</li></ul></div>
+		<div class="pd-link">https://github.com/Jiang0810</div>
+		<div class="pd-showcase"></div>
+		<div class="pd-video"></div>
+		<div class="pd-photos"></div>
+	</div>
+	<div class="project-data" id="pd-certificates">
+		<div class="pd-title">🏆 获奖证书与证明材料</div>
+		<div class="pd-sub">竞赛奖项 · 技能认证 · 英语能力</div>
+		<div class="pd-body"><p><strong>竞赛获奖</strong></p><ul><li>🥈 全国大学生计算机设计大赛 · <strong>全国二等奖</strong></li><li>📊 第32次CCF-CSP认证（算法比赛） · <strong>全国前20%</strong></li><li>🥉 全国大学生计算机博弈大赛 · <strong>全国三等奖</strong></li></ul><p><strong>英语能力</strong></p><ul><li>📝 英语六级 · <strong>488分</strong>，具备基本的口语交流能力</li></ul><p><strong>学历背景</strong></p><ul><li>🎓 沈阳航空航天大学 · 计算机科学与技术 · 2022.09 – 2026.07</li><li>📚 高考 583 分，主修：数据结构、算法、OS、计网、数据库、软件工程</li></ul></div>
+		<div class="pd-link"></div>
+		<div class="pd-showcase"></div>
+		<div class="pd-video"></div>
+		<div class="pd-photos"></div>
 	</div>
 </div>
 
