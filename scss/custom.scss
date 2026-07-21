@@ -458,8 +458,8 @@ body{
 	.works-list {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		gap: 24px;
-		max-width: 900px;
+		gap: 28px;
+		max-width: 1060px;
 		margin: 0 auto;
 		.fade{
 			top: 30px;
@@ -484,22 +484,22 @@ body{
 		}
 
 		.work-info{
-			padding: 28px 30px 32px;
+			padding: 36px 36px 40px;
 			color: var(--text-primary);
 			background: var(--bg-primary);
 			position: static;
 			height: auto;
 
 			h2{
-				font-size: 20px;
+				font-size: 22px;
 				font-weight: 600;
-				margin-bottom: 12px;
+				margin-bottom: 14px;
 				color: var(--text-primary);
 			}
 			p{
-				font-size: 15px;
+				font-size: 16px;
 				color: var(--text-secondary);
-				line-height: 1.6;
+				line-height: 1.65;
 				padding-bottom: 0;
 			}
 		}

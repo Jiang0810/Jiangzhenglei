@@ -494,6 +494,11 @@ $(document).on('mousewheel DOMMouseScroll', function(e){
   var bodyEl = document.getElementById('detail-body');
   var linkEl = document.getElementById('detail-link');
 
+  var showcaseEl = document.getElementById('detail-showcase');
+  var showcaseLink = document.getElementById('detail-showcase-link');
+  var videoPlaceholder = document.getElementById('video-placeholder');
+  var detailVideo = document.getElementById('detail-video');
+
   var projects = {
     shenfei: {
       title: '✈ 航空工业沈阳飞机工业集团有限公司',
@@ -505,7 +510,9 @@ $(document).on('mousewheel DOMMouseScroll', function(e){
         '设计并执行 5 组对比实验，覆盖检索策略、示例数量与模型架构等。实现编辑距离、BLEU-1/4、ROUGE-L 三类评估指标，在 5,533 样本上达到工艺相似率 0.93。</p>' +
         '<p><strong>3. Prompt工程与缓存优化</strong><br>' +
         '设计多层级 Prompt 模板引导大模型输出结构化工序序列。编写工序简述实现信息去噪，设计 RAG 缓存预计算机制提升检索效率。</p>',
-      link: 'https://github.com/Jiang0810'
+      link: 'https://github.com/Jiang0810',
+      showcaseLink: null,
+      video: null
     },
     hetao: {
       title: '🧠 北京聪明核桃教育科技有限公司',
@@ -518,7 +525,9 @@ $(document).on('mousewheel DOMMouseScroll', function(e){
         '<li>单课时生产周期从 <strong>3 天缩短至 4 小时</strong></li>' +
         '<li>支撑暑期 20+ 节 AI 启蒙课的规模化内容交付</li>' +
         '</ul>',
-      link: 'https://github.com/Jiang0810'
+      link: 'https://github.com/Jiang0810',
+      showcaseLink: null,
+      video: null
     },
     missile: {
       title: '🚀 导弹协同攻击系统',
@@ -529,7 +538,9 @@ $(document).on('mousewheel DOMMouseScroll', function(e){
         '<li>结合威胁代价等多价值综合设计目标函数</li>' +
         '<li>本人负责编写 A* 算法核心逻辑</li>' +
         '</ul>',
-      link: 'https://github.com/Jiang0810/Missle'
+      link: 'https://github.com/Jiang0810/Missle',
+      showcaseLink: null,
+      video: null
     },
     'phantom-go': {
       title: '⚫ Phantom-Go 围棋博弈程序',
@@ -540,7 +551,9 @@ $(document).on('mousewheel DOMMouseScroll', function(e){
         '<li>动态轮数迭代搜索（10w → 3w）</li>' +
         '<li>本人负责除测试外的全部开发工作</li>' +
         '</ul>',
-      link: 'https://github.com/Jiang0810/Phantom-Go'
+      link: 'https://github.com/Jiang0810/Phantom-Go',
+      showcaseLink: null,
+      video: null
     }
   };
 
@@ -552,6 +565,33 @@ $(document).on('mousewheel DOMMouseScroll', function(e){
     bodyEl.innerHTML = p.body;
     linkEl.href = p.link;
     linkEl.style.display = 'inline-block';
+
+    // Showcase link
+    if (p.showcaseLink) {
+      showcaseEl.style.display = 'block';
+      showcaseLink.href = p.showcaseLink;
+      showcaseLink.style.display = 'inline-flex';
+    } else {
+      showcaseLink.style.display = 'none';
+    }
+
+    // Video
+    if (p.video) {
+      videoPlaceholder.style.display = 'none';
+      detailVideo.style.display = 'block';
+      detailVideo.src = p.video;
+      detailVideo.load();
+      showcaseEl.style.display = 'block';
+    } else {
+      videoPlaceholder.style.display = 'flex';
+      detailVideo.style.display = 'none';
+      detailVideo.src = '';
+    }
+
+    if (!p.showcaseLink && !p.video) {
+      showcaseEl.style.display = 'none';
+    }
+
     overlay.classList.add('is-open');
     document.body.style.overflow = 'hidden';
   }
@@ -565,6 +605,24 @@ $(document).on('mousewheel DOMMouseScroll', function(e){
     el.addEventListener('click', function() {
       openProject(this.getAttribute('data-project'));
     });
+  });
+
+  // Video upload via placeholder click (uses edit mode file input)
+  videoPlaceholder.addEventListener('click', function() {
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'video/*';
+    input.onchange = function(e) {
+      var file = e.target.files[0];
+      if (!file) return;
+      var url = URL.createObjectURL(file);
+      videoPlaceholder.style.display = 'none';
+      detailVideo.style.display = 'block';
+      detailVideo.src = url;
+      detailVideo.load();
+      showcaseEl.style.display = 'block';
+    };
+    input.click();
   });
 
   backBtn.addEventListener('click', closeProject);
