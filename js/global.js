@@ -263,14 +263,8 @@ $(window).load(function() {
     $('html,body').animate({scrollTop:0}, 100);
     Global.isScrolling = false;
 
-    // Directly show content — skip loading spinner
-    $('.back-home').css('opacity',1);
-    $('.loading').remove();
-    $("body").addClass('finish-loading');
-    $('body').removeClass('loading-process');
-
-    Global.fadeInByOrder('.nav',80,function(){
-        Global.fadeInByOrder('.section-fristpage',120);
+    Global.fadeInByOrder('.nav',100,function(){
+        Global.fadeInByOrder('.section-fristpage',300);
     });
 
 });
@@ -298,7 +292,7 @@ window.onscroll = Global.throttle(function(){
                 break;
         }
 
-        Global.fadeInByOrder(fadeInTarget,100);
+        Global.fadeInByOrder(fadeInTarget,200);
 
     },50);
 
