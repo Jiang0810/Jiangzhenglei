@@ -554,6 +554,44 @@ $(document).on('mousewheel DOMMouseScroll', function(e){
       link: 'https://github.com/Jiang0810/Phantom-Go',
       showcaseLink: null,
       video: null
+    },
+    'rapid-dev': {
+      title: '⚡ 一小时快速开发 APP 与管理系统',
+      sub: 'AI辅助全链路开发 · Uniapp + Vue3 + SpringBoot · 2小时交付',
+      body: '<p><strong>vibe-coding 快速开发实践</strong></p>' +
+        '<p>基于 AI 编程方法论（需求描述 → AI生成 → Review → 测试 → 交付），在 1-2 小时内完成从前端到后端的全链路功能开发：</p>' +
+        '<ul>' +
+        '<li><strong>微信小程序</strong>：使用 Uniapp + HBuilderX 快速搭建，AI 辅助生成页面结构与交互逻辑</li>' +
+        '<li><strong>iOS / Android App</strong>：基于 Uniapp 跨端编译，一套代码多端发布</li>' +
+        '<li><strong>Web 后台管理系统</strong>：Vue3 + SpringBoot + MybatisPlus，包含权限管理、数据可视化等模块</li>' +
+        '<li><strong>数据库设计</strong>：AI 辅助完成 MySQL 表结构设计与 SQL 优化</li>' +
+        '</ul>' +
+        '<p>技术栈：Uniapp、HBuilderX、Vue3、JavaScript、CSS、HTML、SpringBoot、MybatisPlus、MySQL</p>',
+      link: 'https://github.com/Jiang0810',
+      showcaseLink: null,
+      video: null
+    },
+    certificates: {
+      title: '🏆 获奖证书与证明材料',
+      sub: '竞赛奖项 · 技能认证 · 英语能力',
+      body: '<p><strong>竞赛获奖</strong></p>' +
+        '<ul>' +
+        '<li>🥈 全国大学生计算机设计大赛 · <strong>全国二等奖</strong></li>' +
+        '<li>📊 第32次CCF-CSP认证（算法比赛）· <strong>全国前20%</strong></li>' +
+        '<li>🥉 全国大学生计算机博弈大赛 · <strong>全国三等奖</strong></li>' +
+        '</ul>' +
+        '<p><strong>英语能力</strong></p>' +
+        '<ul>' +
+        '<li>📝 英语六级 · <strong>488分</strong>，具备基本的口语交流能力</li>' +
+        '</ul>' +
+        '<p><strong>学历背景</strong></p>' +
+        '<ul>' +
+        '<li>🎓 沈阳航空航天大学 · 计算机科学与技术 · 2022.09 – 2026.07</li>' +
+        '<li>📚 高考 583 分，主修：数据结构、算法、OS、计网、数据库、软件工程</li>' +
+        '</ul>',
+      link: null,
+      showcaseLink: null,
+      video: null
     }
   };
 
