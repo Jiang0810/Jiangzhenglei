@@ -457,9 +457,9 @@ body{
 	}
 	.works-list {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 28px;
-		max-width: 1060px;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 20px;
+		max-width: 960px;
 		margin: 0 auto;
 		.fade{
 			top: 30px;
@@ -484,7 +484,7 @@ body{
 		}
 
 		.work-info{
-			padding: 36px 36px 40px;
+			padding: 24px 22px 28px;
 			color: var(--text-primary);
 			background: var(--bg-primary);
 			position: static;

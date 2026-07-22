@@ -355,13 +355,6 @@ $(document).on('mousewheel DOMMouseScroll', function(e){
       els[i].addEventListener('click', preventNav);
     }
 
-    // Make project data editable (title, sub, body)
-    var pdSelector = '.project-data .pd-title, .project-data .pd-sub, .project-data .pd-body, .project-data .pd-link, .project-data .pd-showcase, .project-data .pd-video';
-    var pdEls = document.querySelectorAll(pdSelector);
-    for (var k = 0; k < pdEls.length; k++) {
-      pdEls[k].setAttribute('contenteditable', 'true');
-    }
-
     // Make images clickable for replacement
     var imgs = document.querySelectorAll('img');
     for (var j = 0; j < imgs.length; j++) {
@@ -381,13 +374,6 @@ $(document).on('mousewheel DOMMouseScroll', function(e){
     for (var i = 0; i < els.length; i++) {
       els[i].removeAttribute('contenteditable');
       els[i].removeEventListener('click', preventNav);
-    }
-
-    // Remove project data editable
-    var pdSelector = '.project-data .pd-title, .project-data .pd-sub, .project-data .pd-body, .project-data .pd-link, .project-data .pd-showcase, .project-data .pd-video';
-    var pdEls = document.querySelectorAll(pdSelector);
-    for (var k = 0; k < pdEls.length; k++) {
-      pdEls[k].removeAttribute('contenteditable');
     }
 
     // Remove image listeners
@@ -589,6 +575,15 @@ $(document).on('mousewheel DOMMouseScroll', function(e){
       link: null,
       showcaseLink: null,
       video: null
+    },
+    'placeholder-1': {
+      title: '', sub: '', body: '', link: '', showcaseLink: null, video: null
+    },
+    'placeholder-2': {
+      title: '', sub: '', body: '', link: '', showcaseLink: null, video: null
+    },
+    'placeholder-3': {
+      title: '', sub: '', body: '', link: '', showcaseLink: null, video: null
     }
   };
 
@@ -699,8 +694,9 @@ $(document).on('mousewheel DOMMouseScroll', function(e){
     // Photos
     loadPhotos(id);
 
-    // Show showcase block if anything visible
-    var hasShowcase = sl || v;
+    // Show showcase block: always visible in edit mode, or if it has content
+    var isEditing = document.body.classList.contains('is-editing');
+    var hasShowcase = sl || v || isEditing;
     if (!hasShowcase) {
       var slots = photoGrid.querySelectorAll('.photo-slot img');
       if (slots.length > 0) hasShowcase = true;
@@ -722,20 +718,41 @@ $(document).on('mousewheel DOMMouseScroll', function(e){
     });
   });
 
-  // Video upload
+  // Video upload (edit mode only, persists to hidden div)
   videoPlaceholder.addEventListener('click', function() {
+    if (!document.body.classList.contains('is-editing')) return;
     var input = document.createElement('input');
     input.type = 'file';
     input.accept = 'video/*';
     input.onchange = function(e) {
       var file = e.target.files[0];
       if (!file) return;
-      var url = URL.createObjectURL(file);
-      videoPlaceholder.style.display = 'none';
-      detailVideo.style.display = 'block';
-      detailVideo.src = url;
-      detailVideo.load();
-      showcaseEl.style.display = 'block';
+      var reader = new FileReader();
+      reader.onload = function(ev) {
+        var dataUrl = ev.target.result;
+        videoPlaceholder.style.display = 'none';
+        detailVideo.style.display = 'block';
+        detailVideo.src = dataUrl;
+        detailVideo.load();
+        showcaseEl.style.display = 'block';
+        // Persist to hidden div
+        var activeId = document.querySelector('.works-item.is-active');
+        // Find the current project id from the open state
+        var pd = document.querySelector('.project-detail-panel');
+        if (pd) {
+          var titleEl = document.getElementById('detail-title');
+          // Walk through all project data divs to find matching title
+          var allPd = document.querySelectorAll('[id^="pd-"]');
+          allPd.forEach(function(el) {
+            var t = el.querySelector('.pd-title');
+            if (t && t.textContent === titleEl.textContent) {
+              var v = el.querySelector('.pd-video');
+              if (v) v.textContent = dataUrl;
+            }
+          });
+        }
+      };
+      reader.readAsDataURL(file);
     };
     input.click();
   });
